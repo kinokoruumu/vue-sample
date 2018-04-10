@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import App from './App'
+import App from './App.vue'
 import router from './router'
 
 Vue.config.productionTip = false
@@ -17,10 +17,17 @@ const store = new Vuex.Store({
     decrement (state) {
       state.count--
     }
+  },
+  actions: {
+    incrementAsync ({ commit }) {
+      setTimeout(() => {
+        commit('increment')
+      }, 1000)
+    }
   }
 })
 
-const app = new Vue({
+new Vue({
   el: '#app',
   store,
   router,
